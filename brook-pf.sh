@@ -102,8 +102,7 @@ Download_brook(){
 	[[ ! -e ${file} ]] && mkdir ${file}
 	cd ${file}
 	if [[ ${bit} == "x86_64" ]]; then
-		wget --no-check-certificate -N "http://52.175.26.116:35764/Brook/brook_linux_amd64"
-                mv brook_linux_amd64 brook
+		wget --no-check-certificate -N "http://52.175.26.116:35764/Brook/brook"
 	else
 		wget --no-check-certificate -N "http://52.175.26.116:35764/Brook/brook_linux_386"
 		mv brook_linux_386 brook
