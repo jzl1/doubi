@@ -96,7 +96,7 @@ check_ver_comparison(){
 		fi
 	else
 		echo -e "${Info} 当前 Brook 已是最新版本 [ ${brook_new_ver} ]" && exit 1
-	f
+	fi
 }
 Download_brook(){
 	[[ ! -e ${file} ]] && mkdir ${file}
