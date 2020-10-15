@@ -96,15 +96,16 @@ check_ver_comparison(){
 		fi
 	else
 		echo -e "${Info} 当前 Brook 已是最新版本 [ ${brook_new_ver} ]" && exit 1
-	fi
+	f
 }
 Download_brook(){
 	[[ ! -e ${file} ]] && mkdir ${file}
 	cd ${file}
 	if [[ ${bit} == "x86_64" ]]; then
-		wget --no-check-certificate -N "https://github.com/txthinking/brook/releases/download/${brook_new_ver}/brook"
+		wget --no-check-certificate -N "https://wget.castservice.pp.ua/Brook/brook_linux_amd64"
+                mv brook_linux_amd64 brook
 	else
-		wget --no-check-certificate -N "https://github.com/txthinking/brook/releases/download/${brook_new_ver}/brook_linux_386"
+		wget --no-check-certificate -N "https://wget.castservice.pp.ua/Brook/brook_linux_386"
 		mv brook_linux_386 brook
 	fi
 	[[ ! -e "brook" ]] && echo -e "${Error} Brook 下载失败 !" && exit 1
@@ -112,14 +113,14 @@ Download_brook(){
 }
 Service_brook(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/service/brook-pf_centos -O /etc/init.d/brook-pf; then
+		if ! wget --no-check-certificate https://wget.castservice.pp.ua/Brook/brook-pf_centos -O /etc/init.d/brook-pf; then
 			echo -e "${Error} Brook服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/brook-pf
 		chkconfig --add brook-pf
 		chkconfig brook-pf on
 	else
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/service/brook-pf_debian -O /etc/init.d/brook-pf; then
+		if ! wget --no-check-certificate https://wget.castservice.pp.ua/Brook/brook-pf_debian -O /etc/init.d/brook-pf; then
 			echo -e "${Error} Brook服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/brook-pf
